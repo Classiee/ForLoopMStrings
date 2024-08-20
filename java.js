@@ -9,31 +9,23 @@
 // }
 
 function countVowels() {
-    
     const inputElement = document.getElementById("input");
-    
     const inputString = inputElement.value.toLowerCase();
     console.log("Input String:", inputString);
-    let countA = 0, countE = 0, countI = 0, countO = 0, countU = 0;
-    let countY = 0, countÆ = 0, countØ = 0, countÅ = 0;
-    
-    for (let index=0; index < inputString.length; index++){
+
+    const vowelCounts = {
+        'a': 0, 'e': 0, 'i': 0, 'o': 0, 'u': 0,
+        'y': 0, 'æ': 0, 'ø': 0, 'å': 0
+    };
+
+    for (let index = 0; index < inputString.length; index++) {
         let char = inputString.charAt(index);
         console.log("Character at index", index, ":", char);
-        switch (char) {
-            case 'a': countA++; break;
-            case 'e': countE++; break;
-            case 'i': countI++; break;
-            case 'o': countO++; break;
-            case 'u': countU++; break;
-            case 'y': countY++; break;
-            case 'æ': countÆ++; break;
-            case 'ø': countØ++; break;
-            case 'å': countÅ++; break;
+        if (vowelCounts.hasOwnProperty(char)) {
+            vowelCounts[char]++;
         }
     }
-    document.getElementById("letters").innerHTML = `A: ${countA}, E: ${countE}, I: ${countI}, O: ${countO},
-    U: ${countU}, Y: ${countY}, Æ: ${countÆ}, Ø: ${countØ}, Å: ${countÅ}`;
-    
-     
+
+    document.getElementById("letters").innerHTML = `A: ${vowelCounts['a']}, E: ${vowelCounts['e']}, I: ${vowelCounts['i']}, O: ${vowelCounts['o']},
+    U: ${vowelCounts['u']}, Y: ${vowelCounts['y']}, Æ: ${vowelCounts['æ']}, Ø: ${vowelCounts['ø']}, Å: ${vowelCounts['å']}`;
 }
